@@ -3,6 +3,8 @@ const express = require('express');
 
 const ServerConfig = require('./config/serverConfig');
 const connectDB = require('./config/dbConfig');
+const userRouter = require('./Routes/userRoute');
+const cartRouter = require('./Routes/cartRoute');
 // const User = require('./schema/userSchema');
 
 const app = express();
@@ -14,6 +16,11 @@ app.use(bodyParser.urlencoded());Url encoded format**/
  app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
+
+// Routing middleware
+// If your request route starts with/users then handle it using userRouter
+app.use('/users', userRouter) //Connects the router to the server 
+app.use('/carts', cartRouter)
 
 app.post('/ping', (req, res) => {
     console.log(req.body);
@@ -37,3 +44,6 @@ app.listen(ServerConfig.PORT, async () => {
 });
 //  Server start krna h yha se
 // dhimanjatin003  11@dhiman    
+
+// localhost:3000/users - GET
+// localhost:3000/carts/67890877 -GET 
