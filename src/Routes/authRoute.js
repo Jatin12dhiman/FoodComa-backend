@@ -7,4 +7,4 @@ const authRouter = express.Router();
 
 authRouter.post('/login',login) //This is a route registration
 
-module.exports = authRouter; // Exporting the router 
+module.exports = authRouter; // Exporting the router;
